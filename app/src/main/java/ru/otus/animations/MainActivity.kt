@@ -112,70 +112,76 @@ class MainActivity : AppCompatActivity() {
         bottomCircle4.setColor(Color.RED)
         bottomCircle4.setRadius(200F)
 
-        val animatorAl2 = ObjectAnimator.ofFloat(bottomCircle2, View.ALPHA, 1F, 0.6F)
+        val animatorAl1 = ObjectAnimator.ofFloat(bottomCircle1, View.ALPHA, 1F, 0.75F)
             .apply {
                 interpolator = LinearInterpolator()
-                //duration = 100
+                //duration = 500
+            }
+
+        val animatorAl2 = ObjectAnimator.ofFloat(bottomCircle2, View.ALPHA, 0.75F, 0.6F)
+            .apply {
+                interpolator = LinearInterpolator()
+                //duration = 500
             }
 
         val animatorAl3 = ObjectAnimator.ofFloat(bottomCircle3, View.ALPHA, 0.6F, 0.3F)
             .apply {
                 interpolator = LinearInterpolator()
-                //duration = 100
+                //duration = 500
             }
 
         val animatorAl4 = ObjectAnimator.ofFloat(bottomCircle4, View.ALPHA, 0.3F, 0F)
             .apply {
                 interpolator = LinearInterpolator()
-                //duration = 100
+                //duration = 500
             }
 
         val animatorb1x = ObjectAnimator.ofFloat(bottomCircle1, View.SCALE_X, 0F, 1F)
             .apply {
                 interpolator = LinearInterpolator()
-                //duration = 100
+                //duration = 500
             }
 
         val animatorb1y = ObjectAnimator.ofFloat(bottomCircle1, View.SCALE_Y, 0F, 1F)
             .apply {
                 interpolator = LinearInterpolator()
-                //duration = 100
+                //duration = 500
             }
 
         val animatorb2x = ObjectAnimator.ofFloat(bottomCircle2, View.SCALE_X, 0.5F, 1F)
             .apply {
                 interpolator = LinearInterpolator()
-                //duration = 100
+                //duration = 500
             }
 
         val animatorb2y = ObjectAnimator.ofFloat(bottomCircle2, View.SCALE_Y, 0.5F, 1F)
             .apply {
                 interpolator = LinearInterpolator()
-                //duration = 100
+                //duration = 500
             }
 
-        val animatorb3x = ObjectAnimator.ofFloat(bottomCircle3, View.SCALE_X, 0.5F, 1F)
+        val animatorb3x = ObjectAnimator.ofFloat(bottomCircle3, View.SCALE_X, 0.67F, 1F)
             .apply {
                 interpolator = LinearInterpolator()
-                //duration = 100
+                //duration = 500
             }
 
-        val animatorb3y = ObjectAnimator.ofFloat(bottomCircle3, View.SCALE_Y, 0.5F, 1F)
+        val animatorb3y = ObjectAnimator.ofFloat(bottomCircle3, View.SCALE_Y, 0.67F, 1F)
             .apply {
                 interpolator = LinearInterpolator()
-                //duration = 100
+                //duration = 500
             }
 
-        val animatorb4x = ObjectAnimator.ofFloat(bottomCircle4, View.SCALE_X, 0.5F, 1F)
+        val animatorb4x = ObjectAnimator.ofFloat(bottomCircle4, View.SCALE_X, 0.75F, 1F)
             .apply {
                 interpolator = LinearInterpolator()
-                //duration = 100
+                //duration = 500
             }
 
-        val animatorb4y = ObjectAnimator.ofFloat(bottomCircle4, View.SCALE_Y, 0.5F, 1F)
+        val animatorb4y = ObjectAnimator.ofFloat(bottomCircle4, View.SCALE_Y, 0.75F, 1F)
             .apply {
                 interpolator = LinearInterpolator()
-                //duration = 100
+                //duration = 500
             }
 
         val bottomAnimatorSet = AnimatorSet()
@@ -185,7 +191,7 @@ class MainActivity : AppCompatActivity() {
         val bottomAnimatorSet4 = AnimatorSet()
 
 
-        bottomAnimatorSet1.playTogether(animatorb1x, animatorb1y)
+        bottomAnimatorSet1.playTogether(animatorb1x, animatorb1y, animatorAl1)
         bottomAnimatorSet2.playTogether(animatorb2x, animatorb2y, animatorAl2)
         bottomAnimatorSet3.playTogether(animatorb3x, animatorb3y, animatorAl3)
         bottomAnimatorSet4.playTogether(animatorb4x, animatorb4y, animatorAl4)
@@ -225,6 +231,8 @@ class MainActivity : AppCompatActivity() {
 
         bottomAnimatorSet1.addListener(object : Animator.AnimatorListener {
             override fun onAnimationStart(animation: Animator) {
+                bottomAnimatorSet2.start()
+
 
             }
 
@@ -243,6 +251,7 @@ class MainActivity : AppCompatActivity() {
 
         bottomAnimatorSet2.addListener(object : Animator.AnimatorListener {
             override fun onAnimationStart(animation: Animator) {
+                bottomAnimatorSet3.start()
 
             }
 
@@ -261,6 +270,7 @@ class MainActivity : AppCompatActivity() {
 
         bottomAnimatorSet3.addListener(object : Animator.AnimatorListener {
             override fun onAnimationStart(animation: Animator) {
+                bottomAnimatorSet4.start()
 
             }
 
