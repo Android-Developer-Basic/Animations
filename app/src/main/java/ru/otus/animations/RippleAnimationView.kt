@@ -25,23 +25,25 @@ class RippleAnimationView @JvmOverloads constructor(
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
 
-        generateAnimatedCircle()
+        post {
+            generateAnimatedCircle()
+        }
     }
 
     private fun generateAnimatedCircle() {
-        postDelayed({
-            animatedCircles.add(AnimatedCircleDrawable().apply {
-                startAnimation(height / 2f)
-                onAnimationUpdate = {
-                    invalidate()
-                }
-                onAnimationEnd = {
-                    animatedCircles.remove(this)
-                }
-            })
-            invalidate()
-            generateAnimatedCircle()
-        }, 500)
+        animatedCircles.add(AnimatedCircleDrawable().apply {
+            startAnimation(height / 2f)
+            onAnimationUpdate = {
+                invalidate()
+            }
+            onAnimationEnd = {
+                animatedCircles.remove(this)
+            }
+            onReadyToNext = {
+                generateAnimatedCircle()
+            }
+        })
+        invalidate()
     }
 
     override fun onDraw(canvas: Canvas?) {
@@ -54,7 +56,7 @@ class RippleAnimationView @JvmOverloads constructor(
         }
     }
 
-    class AnimatedCircleDrawable : Drawable() {
+    private inner class AnimatedCircleDrawable : Drawable() {
         private val paint = Paint().apply {
             color = Color.parseColor("#46d7df")
             style = Paint.Style.FILL
@@ -64,6 +66,7 @@ class RippleAnimationView @JvmOverloads constructor(
         private var opacity = 1f
 
         var onAnimationUpdate: (() -> Unit)? = null
+        var onReadyToNext: (() -> Unit)? = null
         var onAnimationEnd: (() -> Unit)? = null
 
         fun startAnimation(toRadius: Float) {
@@ -72,6 +75,10 @@ class RippleAnimationView @JvmOverloads constructor(
                 ValueAnimator.ofFloat(0f, toRadius).apply {
                     addUpdateListener {
                         radius = it.animatedValue as Float
+                        if (radius >= toRadius / 10) {
+                            onReadyToNext?.invoke()
+                            onReadyToNext = null
+                        }
                         onAnimationUpdate?.invoke()
                     }
                 },
@@ -117,6 +124,7 @@ class RippleAnimationView @JvmOverloads constructor(
 
         }
 
+        @Deprecated("Deprecated in Java")
         override fun getOpacity() = PixelFormat.UNKNOWN
 
     }
