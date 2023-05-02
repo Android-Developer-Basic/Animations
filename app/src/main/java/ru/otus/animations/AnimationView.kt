@@ -6,28 +6,27 @@ import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
-import android.util.AttributeSet
 import android.view.View
 import android.view.animation.LinearInterpolator
 import androidx.core.animation.doOnEnd
 
 
 class AnimationView
-@JvmOverloads constructor(
-    context: Context,
-    attributeSet: AttributeSet? = null,
-    defStyleAttr: Int = 0
+constructor(
+    context: Context
 
-) :View(context, attributeSet, defStyleAttr) {
+    ) :View(context) {
 
-    var r = 0f
-    var a = 0
+    private var r = 0f
+    private var a = 0
 
     private val paint = Paint().apply {
         color = context.getColor(R.color.circle3)
         style = Paint.Style.FILL
         strokeWidth = 2f
     }
+    private val radiusArray = arrayOf(40,120,200,280)
+    private val alphaArray = arrayOf(255, 200, 130, 50)
     private val deltaR = PropertyValuesHolder.ofFloat("r",0f, 80f )
     private val deltaAlpha = PropertyValuesHolder.ofInt("a", 0, 50)
     private val animator = ValueAnimator().apply {
@@ -41,14 +40,9 @@ class AnimationView
             this@AnimationView.invalidate()
         }
     }
-
     override fun onDraw(canvas: Canvas){
         super.onDraw(canvas)
-        canvas.drawCircle(this.width.toFloat()/2, this.height.toFloat()/2, r+40, paint.apply { alpha = 255 - a})
-        canvas.drawCircle(this.width.toFloat()/2, this.height.toFloat()/2, r+120, paint.apply { alpha = 200 - a})
-        canvas.drawCircle(this.width.toFloat()/2, this.height.toFloat()/2, r+200, paint.apply { alpha = 130 - a})
-        canvas.drawCircle(this.width.toFloat()/2, this.height.toFloat()/2, r+280, paint.apply { alpha = 50 - a})
-
+        drawCircle(canvas)
     }
 
     fun playAnimation(isStarted:Boolean){
@@ -58,6 +52,14 @@ class AnimationView
         }
         else animator.pause()
     }
-
+    private fun drawCircle(canvas:Canvas){
+        for(i in radiusArray.indices){
+            canvas.drawCircle(
+                width.toFloat()/2,
+                height.toFloat()/2,
+                r+radiusArray[i],
+                paint.apply { alpha = alphaArray[i] - a})
+        }
+    }
 
 }
