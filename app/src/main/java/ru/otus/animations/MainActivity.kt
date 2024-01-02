@@ -9,11 +9,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val loadingAnimationView = findViewById<AnimatedView>(R.id.loading)
         loadingAnimationView.setOnClickListener {
-            loadingAnimationView.startAnimation()
+            loadingAnimationView.animateCircles()
         }
         val rippleAnimationView = findViewById<AnimatedView>(R.id.ripple)
         rippleAnimationView.setOnClickListener {
-            rippleAnimationView.startAnimation()
+            rippleAnimationView.animateCircles()
         }
     }
 }

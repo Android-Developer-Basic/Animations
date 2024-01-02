@@ -9,6 +9,8 @@ abstract class AnimatedView(context: Context, attrs: AttributeSet) : View(contex
 
     abstract val duration: Long
 
+    private var started: Boolean = false
+
     protected val circles: List<Circle> by lazy {
         getAnimationCircles()
     }
@@ -19,7 +21,12 @@ abstract class AnimatedView(context: Context, attrs: AttributeSet) : View(contex
         invalidate()
     }
 
-    abstract fun startAnimation()
+    fun animateCircles() = started.takeUnless { it }?.let {
+        started = true
+        startAnimation()
+    }
+
+    protected abstract fun startAnimation()
 
     abstract fun getAnimationCircles(): List<Circle>
 
