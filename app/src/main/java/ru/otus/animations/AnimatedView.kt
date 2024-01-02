@@ -9,7 +9,9 @@ abstract class AnimatedView(context: Context, attrs: AttributeSet) : View(contex
 
     abstract val duration: Long
 
-    protected var circles: List<Circle> = emptyList()
+    protected val circles: List<Circle> by lazy {
+        getAnimationCircles()
+    }
 
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
@@ -18,5 +20,7 @@ abstract class AnimatedView(context: Context, attrs: AttributeSet) : View(contex
     }
 
     abstract fun startAnimation()
+
+    abstract fun getAnimationCircles(): List<Circle>
 
 }

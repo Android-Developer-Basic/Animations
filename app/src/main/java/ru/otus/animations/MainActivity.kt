@@ -10,13 +10,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val loadingAnimationView = findViewById<AnimatedView>(R.id.loading)
-        findViewById<Button>(R.id.loadingButton).setOnClickListener {
-            it.visibility = View.GONE
+        loadingAnimationView.setOnClickListener {
             loadingAnimationView.startAnimation()
         }
         val rippleAnimationView = findViewById<AnimatedView>(R.id.ripple)
-        findViewById<Button>(R.id.rippleButton).setOnClickListener {
-            it.visibility = View.GONE
+        rippleAnimationView.setOnClickListener {
             rippleAnimationView.startAnimation()
         }
     }

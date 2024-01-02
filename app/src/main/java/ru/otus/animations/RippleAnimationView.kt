@@ -15,6 +15,7 @@ class RippleAnimationView(context: Context, attrs: AttributeSet) : AnimatedView(
 
     private val numberOfCircles = 4
 
+
     private fun getAnimation(index: Int, circle: Circle) =
         ValueAnimator.ofFloat(0F, 30F).apply {
             duration = this@RippleAnimationView.duration
@@ -30,8 +31,8 @@ class RippleAnimationView(context: Context, attrs: AttributeSet) : AnimatedView(
             }
         }
 
-    override fun startAnimation() {
-        circles = (0 until numberOfCircles).map {
+    override fun getAnimationCircles(): List<Circle> =
+        (0 until numberOfCircles).map {
             Circle(
                 x = width / 2F,
                 y = height / 2F,
@@ -43,6 +44,8 @@ class RippleAnimationView(context: Context, attrs: AttributeSet) : AnimatedView(
                 }
             )
         }
+
+    override fun startAnimation() {
         AnimatorSet().apply {
             playTogether(circles.mapIndexed { index, circle -> getAnimation(index, circle) })
             addListener(

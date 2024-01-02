@@ -59,29 +59,30 @@ class LoadingAnimationView(context: Context, attrs: AttributeSet) : AnimatedView
         }
     }
 
-    override fun startAnimation() {
-        circles = listOf(
-            Circle(
-                x = width / 2 - toPixels(35F),
-                y = height / 2F,
-                radius= toPixels(30F),
-                paint = Paint().apply {
-                    style = Paint.Style.FILL
-                    color = Color.rgb(124, 79, 255)
-                    alpha = 255
-                }
-            ),
-            Circle(
-                x = width / 2 + toPixels(35F),
-                y = height / 2F,
-                radius = toPixels(30F),
-                paint = Paint().apply {
-                    style = Paint.Style.FILL
-                    color = Color.rgb(255, 57, 212)
-                    alpha = 255
-                }
-            )
+    override fun getAnimationCircles(): List<Circle> = listOf(
+        Circle(
+            x = width / 2 - toPixels(35F),
+            y = height / 2F,
+            radius = toPixels(30F),
+            paint = Paint().apply {
+                style = Paint.Style.FILL
+                color = Color.rgb(124, 79, 255)
+                alpha = 255
+            }
+        ),
+        Circle(
+            x = width / 2 + toPixels(35F),
+            y = height / 2F,
+            radius = toPixels(30F),
+            paint = Paint().apply {
+                style = Paint.Style.FILL
+                color = Color.rgb(255, 57, 212)
+                alpha = 255
+            }
         )
+    )
+
+    override fun startAnimation() {
         AnimatorSet().apply {
             playSequentially(
                 AnimatorSet().apply {
