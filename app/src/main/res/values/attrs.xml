@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="RippleLayout">
+        <attr name="rippleColor" format="color" />
+        <attr name="rippleAutomaticStartOfAnimation" format="boolean" />
+        <attr name="rippleStrokeWidth" format="dimension"/>
+        <attr name="rippleRadius" format="dimension"/>
+        <attr name="rippleDuration" format="integer"/>
+        <attr name="rippleAmount" format="integer"/>
+        <attr name="rippleScale" format="float"/>
+        <attr name="rippleType" format="enum">
+            <enum name="fillRipple" value="0"/>
+            <enum name="strokeRipple" value="1"/>
+        </attr>
+    </declare-styleable>
+</resources>
