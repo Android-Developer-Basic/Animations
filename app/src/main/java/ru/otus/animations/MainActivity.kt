@@ -7,9 +7,14 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val rippleLayout = findViewById<RippleLayout>(R.id.rippleLayout)
+        /*val rippleLayout = findViewById<RippleLayout>(R.id.rippleLayout)
         rippleLayout.setOnClickListener {
             rippleLayout.startStopRippleAnimation()
+        }*/
+
+        val loadingAnimationView = findViewById<LoadingAnimationView>(R.id.loadingAnimationView)
+        loadingAnimationView.setOnClickListener {
+            loadingAnimationView.startFirstAnimation()
         }
 
     }

@@ -6,21 +6,40 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <ru.otus.animations.RippleLayout
-        android:id="@+id/rippleLayout"
+    <ru.otus.animations.LoadingAnimationView
+        android:id="@+id/loadingAnimationView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:rippleAutomaticStartOfAnimation="true"
-        app:rippleColor="@color/rippleColor"
-        app:rippleStrokeWidth="2dp"
-        app:rippleRadius="32dp"
-        app:rippleDuration="3000"
-        app:rippleAmount="5"
-        app:rippleScale="2"
-        app:rippleType="fillRipple"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <!--<ru.otus.animations.LoadingAnimationView
+        android:id="@+id/loadingAnimationView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/rippleLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ru.otus.animations.RippleLayout
+        android:id="@+id/rippleLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loadingAnimationView"
+        app:rippleAmount="5"
+        app:rippleColor="@color/rippleColor"
+        app:rippleDuration="3000"
+        app:rippleRadius="32dp"
+        app:rippleScale="2"
+        app:rippleStrokeWidth="2dp"
+        app:rippleType="fillRipple" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

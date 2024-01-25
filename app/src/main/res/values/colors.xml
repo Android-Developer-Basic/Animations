@@ -8,4 +8,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="rippleColor">#0099CC</color>
+    <color name="leftCircleColor">#7c4fff</color>
+    <color name="rightCircleColor">#ff39d3</color>
 </resources>
