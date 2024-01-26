@@ -10,8 +10,9 @@
         android:id="@+id/loadingAnimationView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/rippleLayout"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:autoStartOfAnimation="false"
@@ -20,16 +21,6 @@
         app:spaceBetween="100"
         app:durationAnimation="1000"
         app:interpolator="@android:anim/accelerate_decelerate_interpolator"/>
-
-    <!--<ru.otus.animations.LoadingAnimationView
-        android:id="@+id/loadingAnimationView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/rippleLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <ru.otus.animations.RippleLayout
         android:id="@+id/rippleLayout"
@@ -46,6 +37,6 @@
         app:rippleRadius="32dp"
         app:rippleScale="2"
         app:rippleStrokeWidth="2dp"
-        app:rippleType="fillRipple" />-->
+        app:rippleType="fillRipple" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
