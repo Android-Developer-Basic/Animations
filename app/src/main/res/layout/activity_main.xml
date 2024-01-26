@@ -6,13 +6,37 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
+    <ru.otus.animations.LoadingAnimationView
+        android:id="@+id/loadingAnimationView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/rippleLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:autoStartOfAnimation="false"
+        app:leftCircleColor="@color/leftCircleColor"
+        app:rightCircleColor="@color/rightCircleColor"
+        app:spaceBetween="100"
+        app:durationAnimation="1000"
+        app:interpolator="@android:anim/accelerate_decelerate_interpolator"/>
+
+    <ru.otus.animations.RippleLayout
+        android:id="@+id/rippleLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/loadingAnimationView"
+        app:rippleAmount="5"
+        app:rippleColor="@color/rippleColor"
+        app:rippleDuration="3000"
+        app:rippleRadius="48dp"
+        app:rippleScale="3"
+        app:rippleStrokeWidth="1dp"
+        app:rippleType="fillRipple" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="RippleLayout">
+        <attr name="rippleColor" format="color" />
+        <attr name="rippleAutomaticStartOfAnimation" format="boolean" />
+        <attr name="rippleStrokeWidth" format="dimension"/>
+        <attr name="rippleRadius" format="dimension"/>
+        <attr name="rippleDuration" format="integer"/>
+        <attr name="rippleAmount" format="integer"/>
+        <attr name="rippleScale" format="float"/>
+        <attr name="rippleType" format="enum">
+            <enum name="fillRipple" value="0"/>
+            <enum name="strokeRipple" value="1"/>
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="LoadingAnimationView">
+        <attr name="autoStartOfAnimation" format="boolean" />
+        <attr name="leftCircleColor" format="color"/>
+        <attr name="rightCircleColor" format="color"/>
+        <attr name="spaceBetween" format="integer"/>
+        <attr name="durationAnimation" format="integer"/>
+        <attr name="startDelayAnimation" format="integer"/>
+        <attr name="interpolator" format="reference" />
+    </declare-styleable>
+</resources>
