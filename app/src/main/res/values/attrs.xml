@@ -14,5 +14,12 @@
         </attr>
     </declare-styleable>
 
-
+    <declare-styleable name="LoadingAnimationView">
+        <attr name="autoStartOfAnimation" format="boolean" />
+        <attr name="leftCircleColor" format="color"/>
+        <attr name="rightCircleColor" format="color"/>
+        <attr name="spaceBetween" format="integer"/>
+        <attr name="durationAnimation" format="integer"/>
+        <attr name="startDelayAnimation" format="integer"/>
+    </declare-styleable>
 </resources>

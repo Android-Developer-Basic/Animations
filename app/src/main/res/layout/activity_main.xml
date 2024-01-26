@@ -13,7 +13,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:autoStartOfAnimation="false"
+        app:leftCircleColor="@color/leftCircleColor"
+        app:rightCircleColor="@color/rightCircleColor"
+        app:spaceBetween="100"
+        app:durationAnimation="1000" />
 
     <!--<ru.otus.animations.LoadingAnimationView
         android:id="@+id/loadingAnimationView"
