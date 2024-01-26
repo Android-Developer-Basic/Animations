@@ -34,9 +34,9 @@
         app:rippleAmount="5"
         app:rippleColor="@color/rippleColor"
         app:rippleDuration="3000"
-        app:rippleRadius="32dp"
-        app:rippleScale="2"
-        app:rippleStrokeWidth="2dp"
+        app:rippleRadius="48dp"
+        app:rippleScale="3"
+        app:rippleStrokeWidth="1dp"
         app:rippleType="fillRipple" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
