@@ -18,7 +18,8 @@
         app:leftCircleColor="@color/leftCircleColor"
         app:rightCircleColor="@color/rightCircleColor"
         app:spaceBetween="100"
-        app:durationAnimation="1000" />
+        app:durationAnimation="1000"
+        app:interpolator="@android:anim/accelerate_decelerate_interpolator"/>
 
     <!--<ru.otus.animations.LoadingAnimationView
         android:id="@+id/loadingAnimationView"

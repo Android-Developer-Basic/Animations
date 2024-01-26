@@ -21,5 +21,6 @@
         <attr name="spaceBetween" format="integer"/>
         <attr name="durationAnimation" format="integer"/>
         <attr name="startDelayAnimation" format="integer"/>
+        <attr name="interpolator" format="reference" />
     </declare-styleable>
 </resources>

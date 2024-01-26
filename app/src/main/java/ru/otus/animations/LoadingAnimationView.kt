@@ -6,10 +6,12 @@ import android.animation.AnimatorSet
 import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.Canvas
-import android.graphics.Color
 import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
+import android.view.animation.AnimationUtils
+import android.view.animation.Interpolator
+import android.view.animation.LinearInterpolator
 
 class LoadingAnimationView : View {
     private var autoStartOfAnimation = DEFAULT_AUTO_START_OF_ANIMATION;
@@ -18,6 +20,7 @@ class LoadingAnimationView : View {
     private var delayAnimation: Long = DEFAULT_START_DELAY_ANIMATION.toLong()
     private var leftCircleColor = DEFAULT_LEFT_CIRCLE_COLOR.toInt()
     private var rightCircleColor = DEFAULT_RIGHT_CIRCLE_COLOR.toInt()
+    private var interpolator: Interpolator = LinearInterpolator()
 
     private val centerX get() = width / 2f;
     private val centerY get() = height / 2f
@@ -82,6 +85,14 @@ class LoadingAnimationView : View {
             R.styleable.LoadingAnimationView_startDelayAnimation,
             DEFAULT_START_DELAY_ANIMATION
         ).toLong()
+
+        val interpolatorResId: Int = typedArray.getResourceId(R.styleable.LoadingAnimationView_interpolator, 0)
+
+        if (interpolatorResId != 0) {
+            interpolator = AnimationUtils.loadInterpolator(context, interpolatorResId)
+        }
+
+        typedArray.recycle()
     }
 
     override fun onLayout(changed: Boolean, left: Int, top: Int, right: Int, bottom: Int) {
@@ -102,6 +113,7 @@ class LoadingAnimationView : View {
         animatorSet.apply {
             duration = durationAnimation
             startDelay = delayAnimation
+            interpolator = this.interpolator
 
             playTogether(
                 ValueAnimator.ofFloat(leftCircleOriginalPositionX, rightCircleOriginalPositionX).apply {
@@ -163,6 +175,7 @@ class LoadingAnimationView : View {
         animatorSet.apply {
             duration = durationAnimation
             startDelay = delayAnimation
+            interpolator = this.interpolator
 
             playTogether(
                 ValueAnimator.ofFloat(rightCircleOriginalPositionX, leftCircleOriginalPositionX).apply {
